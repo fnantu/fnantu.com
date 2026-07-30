@@ -24,22 +24,19 @@ const categories = [
     tools: ["PLC Programlama"],
   },
   {
-    label: "İçerik & Medya",
-    tools: ["Ses Mühendisliği", "Dijital Overlay", "Video Analizi"],
-  },
-  {
     label: "Oyun & Sunucu",
     tools: ["Sunucu Kurulumu", "Modlama", "Konfigürasyon"],
   },
   {
     label: "Ortam & Araçlar",
     tools: [
-      "Pop!_OS 24.04",
       "Cursor",
       "Gemini CLI",
       "Opencode",
       "Cloudcode",
-      "Dual-boot",
+      "Visual Studio Code",
+      "Linux",
+      "Windows",
     ],
   },
 ];
