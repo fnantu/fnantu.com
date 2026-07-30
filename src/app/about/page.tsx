@@ -20,10 +20,6 @@ const categories = [
     ],
   },
   {
-    label: "Endüstriyel Otomasyon",
-    tools: ["PLC Programlama"],
-  },
-  {
     label: "Oyun & Sunucu",
     tools: ["Sunucu Kurulumu", "Modlama", "Konfigürasyon"],
   },
