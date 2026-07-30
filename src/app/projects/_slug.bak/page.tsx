@@ -5,6 +5,8 @@ import { PageShell } from "@/components/page-shell";
 import { getProject, getProjects } from "@/lib/content";
 import { ProjectJsonLd } from "@/components/json-ld";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getProjects().map(({ slug }) => ({ slug }));
 }
