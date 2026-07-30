@@ -1,5 +1,49 @@
 import { PageShell } from "@/components/page-shell";
 
+const categories = [
+  {
+    label: "Programlama Dilleri",
+    tools: ["C#", "JavaScript", "Python"],
+  },
+  {
+    label: "Veritabanları",
+    tools: ["MySQL", "PostgreSQL", "MongoDB", "KùzuDB", "Qdrant"],
+  },
+  {
+    label: "Yapay Zeka & Mimari",
+    tools: [
+      "Local LLM",
+      "LangGraph",
+      "Multi-agent",
+      "ETL Pipeline",
+      "Containerized",
+    ],
+  },
+  {
+    label: "Endüstriyel Otomasyon",
+    tools: ["PLC Programlama"],
+  },
+  {
+    label: "İçerik & Medya",
+    tools: ["Ses Mühendisliği", "Dijital Overlay", "Video Analizi"],
+  },
+  {
+    label: "Oyun & Sunucu",
+    tools: ["Sunucu Kurulumu", "Modlama", "Konfigürasyon"],
+  },
+  {
+    label: "Ortam & Araçlar",
+    tools: [
+      "Pop!_OS 24.04",
+      "Cursor",
+      "Gemini CLI",
+      "Opencode",
+      "Cloudcode",
+      "Dual-boot",
+    ],
+  },
+];
+
 export default function About() {
   return (
     <PageShell>
@@ -9,41 +53,31 @@ export default function About() {
           Furkan Nantu
         </h1>
 
-        <div className="mt-12 space-y-6 text-lg leading-8 text-zinc-300">
+        <div className="mt-10 space-y-5 text-lg leading-8 text-zinc-300">
           <p>
             Bursa Teknik Üniversitesi Endüstri Mühendisliği 4. sınıf
-            öğrencisiyim. Veri analizi, süreç iyileştirme ve yazılım
-            geliştirme ile ilgileniyorum.
-          </p>
-          <p>
-            Üniversitede edindiğim analitik düşünme altyapısını, kendi
-            kendime öğrendiğim yazılım becerileriyle birleştiriyorum.
-            Karmaşık problemleri anlaşılır hale getirmeyi seviyorum.
+            öğrencisiyim. Veri analizi, yazılım geliştirme ve sistem
+            tasarımıyla ilgileniyorum. Karmaşık problemleri anlaşılır
+            çözümlere dönüştürmeyi seviyorum.
           </p>
         </div>
 
-        <div className="mt-16 border-t border-white/[.06] pt-12">
-          <p className="eyebrow">Kullandıklarım</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {[
-              "Python",
-              "SQL",
-              "TypeScript",
-              "React",
-              "Next.js",
-              "Tailwind CSS",
-              "Power BI",
-              "Docker",
-              "Git",
-            ].map((tool) => (
-              <span
-                key={tool}
-                className="rounded-full border border-white/[.08] px-3 py-1.5 font-mono text-xs text-zinc-300"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
+        <div className="mt-16 space-y-12 border-t border-white/[.06] pt-12">
+          {categories.map((cat) => (
+            <div key={cat.label}>
+              <p className="eyebrow">{cat.label}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {cat.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-white/[.08] px-3 py-1.5 font-mono text-xs text-zinc-300"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </PageShell>
