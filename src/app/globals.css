@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: #0C0A18; --surface: #151224; --muted: #8E85AB; --line: rgba(255,255,255,.06); --violet: #A855F7; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: #F5F3FF; font-family: Manrope, Arial, sans-serif; }
+a { text-decoration: none; color: inherit; }
+::selection { background: #7C3AED; color: #F5F3FF; }
+.grid-bg { background-image: linear-gradient(rgba(168,85,247,.04) 1px, transparent 1px), linear-gradient(90deg,rgba(168,85,247,.04) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 82%); }
+.eyebrow { @apply font-mono text-[11px] uppercase tracking-[.18em] text-violet-300; }
+.section { @apply mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28; }
+.card { @apply rounded-[18px] border border-white/[.06] bg-zinc-900 transition duration-200 hover:border-white/[.12] hover:shadow-glow; }
+.link-arrow { @apply inline-flex items-center gap-2 text-sm font-bold text-white transition hover:text-violet-300; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-in { animation: fade-in 0.35s ease-out; }
