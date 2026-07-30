@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Furkan Nantu</title>
-    <link>https://furkannantu.com</link>
+    <link>https://fnantu.com</link>
     <description>Endüstri Mühendisi — veri, yazılım ve sistemler üzerine notlar.</description>
     <language>tr</language>
-    <atom:link href="https://furkannantu.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://fnantu.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Tahmin modellerinde belirsizliği yönetmek]]></title>
-      <link>https://furkannantu.com/blog/forecasting-with-uncertainty</link>
+      <link>https://fnantu.com/blog/forecasting-with-uncertainty</link>
       <description><![CDATA[Tek bir sayı vermek yerine aralıklarla düşünmek neden daha iyi?]]></description>
       <category>DATA</category>
       <pubDate>Invalid Date</pubDate>
-      <guid>https://furkannantu.com/blog/forecasting-with-uncertainty</guid>
+      <guid>https://fnantu.com/blog/forecasting-with-uncertainty</guid>
     </item>
     <item>
       <title><![CDATA[SQL sorgusundan karara]]></title>
-      <link>https://furkannantu.com/blog/from-sql-to-decision</link>
+      <link>https://fnantu.com/blog/from-sql-to-decision</link>
       <description><![CDATA[İyi bir analiz sadece sonucu değil, hangi soruyu cevapladığını da bilir.]]></description>
       <category>SQL</category>
       <pubDate>Tue, 27 May 2025 21:00:00 GMT</pubDate>
-      <guid>https://furkannantu.com/blog/from-sql-to-decision</guid>
+      <guid>https://fnantu.com/blog/from-sql-to-decision</guid>
     </item>
     <item>
       <title><![CDATA[Otomasyonu insana göre tasarlamak]]></title>
-      <link>https://furkannantu.com/blog/human-centered-automation</link>
+      <link>https://fnantu.com/blog/human-centered-automation</link>
       <description><![CDATA[Otomasyon insanı devre dışı bırakmak değil, tekrar eden işleri azaltmak için.]]></description>
       <category>SYSTEMS</category>
       <pubDate>Fri, 09 May 2025 21:00:00 GMT</pubDate>
-      <guid>https://furkannantu.com/blog/human-centered-automation</guid>
+      <guid>https://fnantu.com/blog/human-centered-automation</guid>
     </item>
   </channel>
 </rss>
