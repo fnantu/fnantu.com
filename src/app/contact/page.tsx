@@ -17,11 +17,11 @@ export default function Contact() {
 
         <div className="mt-12 space-y-6">
           <a
-            href="mailto:hello@fnantu.com"
+            href="mailto:furkannantu@hotmail.com"
             className="inline-flex items-center gap-3 text-xl font-bold text-violet-300 transition hover:text-violet-400"
           >
             <Mail size={20} />
-            hello@furkannantu.com
+            furkannantu@hotmail.com
           </a>
         </div>
 

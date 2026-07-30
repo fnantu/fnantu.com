@@ -150,16 +150,24 @@ export default async function Home() {
               Üzerinde çalıştıklarım.
             </h2>
           </div>
-          <Link href="/projects" className="link-arrow hidden sm:flex">
-            Tümü
-            <ArrowUpRight size={15} />
-          </Link>
+          {projects.length > 0 && (
+            <Link href="/projects" className="link-arrow hidden sm:flex">
+              Tümü
+              <ArrowUpRight size={15} />
+            </Link>
+          )}
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+        {projects.length === 0 ? (
+          <p className="text-zinc-500">
+            Projeler yakında burada olacak.
+          </p>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-3">
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="section">

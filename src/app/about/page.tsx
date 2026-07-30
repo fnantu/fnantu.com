@@ -11,18 +11,14 @@ export default function About() {
 
         <div className="mt-12 space-y-6 text-lg leading-8 text-zinc-300">
           <p>
-            Endüstri Mühendisiyim. Veri analizi, süreç iyileştirme ve yazılım
-            geliştirme ile ilgileniyorum. Karmaşık problemleri anlaşılır hale
-            getirmeyi seviyorum.
+            Bursa Teknik Üniversitesi Endüstri Mühendisliği 4. sınıf
+            öğrencisiyim. Veri analizi, süreç iyileştirme ve yazılım
+            geliştirme ile ilgileniyorum.
           </p>
           <p>
-            Üniversitede edindiğim analitik düşünme altyapısını, kendi kendime
-            öğrendiğim yazılım becerileriyle birleştiriyorum. Python, SQL ve
-            modern web teknolojileriyle çalışıyorum.
-          </p>
-          <p>
-            Şu anda özellikle tahmin sistemleri, operasyonel zeka araçları ve
-            yapay zeka destekli uygulamalar üzerinde yoğunlaşıyorum.
+            Üniversitede edindiğim analitik düşünme altyapısını, kendi
+            kendime öğrendiğim yazılım becerileriyle birleştiriyorum.
+            Karmaşık problemleri anlaşılır hale getirmeyi seviyorum.
           </p>
         </div>
 
