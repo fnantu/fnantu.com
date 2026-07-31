@@ -109,7 +109,7 @@
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   color: #fff;
   flex-shrink: 0;
 }
@@ -180,7 +180,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 }
 .cv-root .s-head {
   display: flex;
@@ -209,11 +209,11 @@
   background: #fff;
   border-radius: var(--cv-r-md);
   border: 1px solid var(--cv-bor);
-  padding: 10px 12px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 .cv-root .c-head {
   display: flex;
@@ -244,28 +244,6 @@
   font-size: 10.5px;
   color: var(--cv-tx2);
   line-height: 1.4;
-}
-.cv-root .cat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-.cv-root .cat-item {
-  background: #fff;
-  border-radius: var(--cv-r-sm);
-  border: 1px solid var(--cv-bor);
-  padding: 7px 10px;
-}
-.cv-root .cat-label {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--cv-pri);
-  margin-bottom: 2px;
-}
-.cv-root .cat-tools {
-  font-size: 9.5px;
-  color: var(--cv-tx2);
-  line-height: 1.35;
 }
 .cv-root .tl {
   display: flex;
