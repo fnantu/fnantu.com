@@ -201,9 +201,10 @@
   margin-bottom: 8px;
 }
 .cv-root .summary {
-  font-size: 11.5px;
-  line-height: 1.5;
+  font-size: 10px;
+  line-height: 1.4;
   color: var(--cv-tx2);
+  white-space: pre-line;
 }
 .cv-root .card {
   background: #fff;
