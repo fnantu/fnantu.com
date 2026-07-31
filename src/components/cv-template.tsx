@@ -64,10 +64,6 @@ export function CvTemplate() {
           <div>
             <h1>Furkan NANTU</h1>
             <h2>Endüstri Mühendisliği Öğrencisi</h2>
-            <p>
-              Veri Analitiği &nbsp;·&nbsp; Yapay Zeka &nbsp;·&nbsp; Dijital
-              Dönüşüm
-            </p>
           </div>
           <a className="qr" href="https://fnantu.com" target="_blank">
             <span className="qr-b">
