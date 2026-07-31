@@ -201,8 +201,8 @@
   margin-bottom: 8px;
 }
 .cv-root .summary {
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.45;
   color: var(--cv-tx2);
   white-space: pre-line;
 }
