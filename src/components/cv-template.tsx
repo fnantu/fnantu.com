@@ -35,7 +35,6 @@ const skills = [
   "TypeScript & Next.js",
   "SQL & NoSQL",
   "Docker",
-  "Otomasyon & PLC",
   "Power BI",
 ];
 
