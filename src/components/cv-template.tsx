@@ -170,7 +170,7 @@ export function CvTemplate() {
                 <div className="s-bar" />
               </div>
               <div className="tl">
-                <span className="yb">2023 - Devam</span>
+                <span className="yb">Devam</span>
                 <div>
                   <div className="edu">Bursa Teknik Üniversitesi</div>
                   <div className="edu-sub">Endüstri Mühendisliği (Lisans)</div>
