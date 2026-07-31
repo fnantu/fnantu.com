@@ -4,7 +4,7 @@ import matter from "gray-matter";
 
 export type Project = {
   slug: string; number: string; title: string; summary: string; description: string;
-  tags: string[]; year: string; outcome: string; body: string; github?: string;
+  tags: string[]; year: string; outcome: string; body: string; github?: string; status?: string;
 };
 
 export type Post = {
@@ -62,6 +62,7 @@ export function getProjects(): Project[] {
     outcome: item.outcome || "",
     body: item.body || "",
     github: item.github || undefined,
+    status: item.status || undefined,
   })).sort((a, b) => a.number.localeCompare(b.number));
 }
 
