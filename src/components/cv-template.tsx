@@ -26,17 +26,27 @@ const contacts = [
   },
 ];
 
-const skills = [
-  "Süreç İyileştirme",
-  "Sistem Analizi",
-  "Veri Analitiği & ETL",
-  "Yapay Zeka (LLM, RAG)",
-  "Python & C#",
-  "TypeScript & Next.js",
-  "SQL & NoSQL",
-  "Docker",
-  "Otomasyon & PLC",
-  "Power BI",
+const categories = [
+  {
+    label: "Programlama Dilleri",
+    tools: "C#, JavaScript, Python",
+  },
+  {
+    label: "Veritabanları",
+    tools: "MySQL, PostgreSQL, MongoDB, KùzuDB, Qdrant",
+  },
+  {
+    label: "Yapay Zeka & Mimari",
+    tools: "Local LLM, LangGraph, Multi-agent, ETL Pipeline, Containerized",
+  },
+  {
+    label: "Oyun & Sunucu",
+    tools: "Sunucu Kurulumu, Modlama, Konfigürasyon",
+  },
+  {
+    label: "Ortam & Araçlar",
+    tools: "Cursor, Gemini CLI, Opencode, VS Code, Linux, Windows",
+  },
 ];
 
 const languages = [
@@ -53,7 +63,7 @@ const interests = [
 ];
 
 const summary =
-  "Bursa Teknik Üniversitesi Endüstri Mühendisliği öğrencisiyim. Veri analitiği, yapay zeka ajanları ve dijital dönüşüm teknolojilerine odaklanıyorum. Karmaşık sistemleri analiz etme ve süreçleri iyileştirme ilgimi; Python, C#, TypeScript ve modern veri mimarileriyle birleştirerek ölçeklenebilir analitik sistemler ve otomasyon çözümleri geliştiriyorum. Eğitimime devam ederken profesyonel iş hayatına katma değer üretebileceğim projelerle erken adım atmak istiyorum.";
+  "Bursa Teknik Üniversitesi Endüstri Mühendisliği öğrencisiyim. Karmaşık sistemleri analiz etme ve süreçleri iyileştirme ilgimi; Python, C#, TypeScript ile birleştirerek veri odaklı ölçeklenebilir çözümler geliştiriyorum.";
 
 export function CvTemplate() {
   const projects = getProjects();
@@ -98,17 +108,6 @@ export function CvTemplate() {
             </div>
 
             <div>
-              <div className="st">Yetenekler</div>
-              <div className="skills">
-                {skills.map((skill) => (
-                  <span className="chip" key={skill}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
               <div className="st">Diller</div>
               {languages.map((language) => (
                 <div className="l-item" key={language.name}>
@@ -136,6 +135,21 @@ export function CvTemplate() {
                 <div className="s-bar" />
               </div>
               <p className="summary">{summary}</p>
+            </section>
+
+            <section>
+              <div className="s-head">
+                <div className="s-t">Yetkinlikler</div>
+                <div className="s-bar" />
+              </div>
+              <div className="cat-grid">
+                {categories.map((cat) => (
+                  <div className="cat-item" key={cat.label}>
+                    <div className="cat-label">{cat.label}</div>
+                    <div className="cat-tools">{cat.tools}</div>
+                  </div>
+                ))}
+              </div>
             </section>
 
             {projects.length > 0 && (
