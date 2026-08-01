@@ -45,9 +45,9 @@ const languages = [
 
 const interests = [
   "Kişisel Verimlilik Yazılımları",
-  "Strateji Odaklı Oyunlar",
-  "Teknoloji & İçerik Üretimi",
-  "3B Tasarım ve Donanım",
+  "Strateji & Taktik Oyunları",
+  "Warhammer 40K Evreni",
+  "İçerik Üretimi (YouTube)",
   "Bilim Kurgu Edebiyatı",
 ];
 
@@ -67,7 +67,7 @@ export function CvTemplate() {
           </div>
           <a className="qr" href="https://fnantu.com" target="_blank">
             <span className="qr-b">
-              <QrCode url="https://fnantu.com" />
+              <QrCode url="https://fnantu.com" size={68} />
             </span>
             <span className="qr-l">fnantu.com ↓ Tara</span>
           </a>

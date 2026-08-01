@@ -46,7 +46,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--cv-sh);
-  height: 108px;
+  height: 116px;
 }
 .cv-root .hdr h1 {
   font-size: 28px;
@@ -79,8 +79,8 @@
   text-decoration: none;
 }
 .cv-root .qr-b {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   background: #fff;
   border-radius: 10px;
   padding: 6px;
