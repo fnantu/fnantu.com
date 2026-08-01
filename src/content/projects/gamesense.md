@@ -1,7 +1,7 @@
 ---
-slug: autonomous-game-coach
+slug: gamesense
 number: "01"
-title: Otonom Oyun Koçu
+title: GameSense
 summary: Taktiksel oyunlar için GraphRAG + Multi-Agent LLM tabanlı yerel koçluk sistemi.
 description: Karmaşık oyunlarda kullanıcının niyetini anlayan, vektör ve grafik veritabanlarından anlık veri çeken, çoklu ajan mimarisiyle stratejik rehberlik sunan yapay zeka sistemi.
 tags: Python, TypeScript, LangGraph, Qdrant, KùzuDB, FastAPI, Next.js, Docker
