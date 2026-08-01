@@ -42,7 +42,14 @@ export default function About() {
     <PageShell>
       <section className="section max-w-3xl pt-20 sm:pt-28">
         <p className="eyebrow">Hakkımda</p>
-        <h1 className="mt-5 text-5xl font-extrabold tracking-tight sm:text-7xl">
+        <div className="mt-8 flex justify-center">
+          <img
+            src="/images/avatar.jpg"
+            alt="Furkan Nantu"
+            className="h-36 w-36 rounded-full border-2 border-violet-500/50 object-cover shadow-glow"
+          />
+        </div>
+        <h1 className="mt-6 text-center text-5xl font-extrabold tracking-tight sm:text-7xl">
           Furkan Nantu
         </h1>
 

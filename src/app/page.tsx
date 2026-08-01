@@ -18,6 +18,11 @@ export default async function Home() {
       <section className="relative overflow-hidden">
         <div className="grid-bg absolute inset-0" />
         <div className="section relative min-h-[580px] pt-28 sm:pt-36">
+          <img
+            src="/images/avatar.jpg"
+            alt="Furkan Nantu"
+            className="mb-6 h-20 w-20 rounded-full border-2 border-violet-500/40 object-cover shadow-glow-sm"
+          />
           <h1 className="max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-[-.04em] sm:text-7xl lg:text-8xl">
             Furkan Nantu
           </h1>
