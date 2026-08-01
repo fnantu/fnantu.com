@@ -175,8 +175,6 @@ export function CvTemplate() {
             </section>
           </main>
         </div>
-
-        <footer className="footer">fnantu.com</footer>
       </div>
     </div>
   );

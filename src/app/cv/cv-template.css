@@ -269,18 +269,6 @@
   color: var(--cv-pri);
   font-weight: 500;
 }
-.cv-root .footer {
-  height: 28px;
-  background: var(--cv-side);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cv-acc);
-  font-size: 11px;
-  font-weight: 500;
-}
-
 @media print {
   body {
     background: #fff !important;
