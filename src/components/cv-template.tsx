@@ -8,11 +8,6 @@ const contacts = [
     href: "https://www.google.com/maps/place/Bursa",
   },
   {
-    icon: "📞",
-    label: "+90 536 930 26 24",
-    href: "tel:+905369302624",
-  },
-  {
     icon: "✉️",
     label: "furkannantu@hotmail.com",
     href: "mailto:furkannantu@hotmail.com",

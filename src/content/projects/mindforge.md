@@ -1,6 +1,6 @@
 ---
 slug: mindforge
-number: "02"
+number: "03"
 title: MindForge
 summary: Yapay zeka destekli offline-first not alma, çizim ve görev yönetimi platformu.
 description: Avalonia UI (.NET 8) masaüstü + FastAPI/LangGraph AI servisi + TF-IDF vektör arama + ProseMirror/Excalidraw editör ile lokal çalışan, senkronizasyonlu bilgi yönetim sistemi.
