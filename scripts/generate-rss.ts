@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { getPosts } from "../src/lib/content";
 
@@ -31,4 +31,8 @@ ${items}
 </rss>`;
 
 writeFileSync(join(process.cwd(), "public", "rss.xml"), xml);
-console.log("✓ public/rss.xml generated");
+const outDir = join(process.cwd(), "out");
+if (existsSync(outDir)) {
+  writeFileSync(join(outDir, "rss.xml"), xml);
+}
+console.log("✓ rss.xml generated");

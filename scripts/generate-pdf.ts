@@ -1,37 +1,56 @@
 import { execSync, spawn } from "node:child_process";
-import { existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 
 async function main() {
-  const docsDir = join(process.cwd(), "public", "documents");
-  if (!existsSync(docsDir)) {
-    mkdirSync(docsDir, { recursive: true });
+  const publicDocsDir = join(process.cwd(), "public", "documents");
+  const outDocsDir = join(process.cwd(), "out", "documents");
+
+  if (!existsSync(publicDocsDir)) {
+    mkdirSync(publicDocsDir, { recursive: true });
   }
 
-  const pdfPath = join(docsDir, "furkan-nantu-cv.pdf");
+  const publicPdfPath = join(publicDocsDir, "furkan-nantu-cv.pdf");
 
-  const server = spawn("npx", ["serve", "out", "-p", "3456"], {
-    stdio: "ignore",
-    detached: true,
-  });
-
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  let pdfGenerated = false;
 
   try {
-    execSync(`weasyprint http://localhost:3456/cv "${pdfPath}"`, {
+    const server = spawn("npx", ["serve", "out", "-p", "3456"], {
       stdio: "ignore",
+      detached: true,
     });
-    console.log("✓ public/documents/furkan-nantu-cv.pdf generated");
-  } catch (error) {
-    console.error("Failed to generate PDF:", error);
-  } finally {
-    if (server.pid) {
-      try {
-        process.kill(-server.pid);
-      } catch {
-        // process already exited
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    try {
+      execSync(`weasyprint http://localhost:3456/cv "${publicPdfPath}"`, {
+        stdio: "ignore",
+      });
+      pdfGenerated = true;
+      console.log("✓ public/documents/furkan-nantu-cv.pdf generated");
+    } catch {
+      console.warn("weasyprint not available, using existing PDF fallback");
+    } finally {
+      if (server.pid) {
+        try {
+          process.kill(-server.pid);
+        } catch {
+          // process already exited
+        }
       }
     }
+  } catch (err) {
+    console.warn("Failed to spawn server for PDF generation:", err);
+  }
+
+  // Ensure PDF is copied to out/documents/ for static export deployments (Cloudflare / Vercel)
+  if (existsSync(publicPdfPath)) {
+    if (!existsSync(outDocsDir)) {
+      mkdirSync(outDocsDir, { recursive: true });
+    }
+    const outPdfPath = join(outDocsDir, "furkan-nantu-cv.pdf");
+    copyFileSync(publicPdfPath, outPdfPath);
+    console.log("✓ out/documents/furkan-nantu-cv.pdf synchronized");
   }
 }
 
