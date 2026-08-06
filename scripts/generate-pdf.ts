@@ -14,48 +14,41 @@ async function main() {
 
   const publicPdfPath = join(publicDocsDir, "furkan-nantu-cv.pdf");
 
-  if (isCI) {
-    console.log("⚙ CI detected — skipping PDF regeneration, copying existing file");
-  } else {
+  if (!isCI && existsSync(publicPdfPath)) {
+    // Local: regenerate PDF with weasyprint via a lightweight server
+    let server: ReturnType<typeof spawn> | null = null;
     try {
-      const server = spawn("npx", ["serve", "out", "-p", "3456"], {
+      server = spawn("npx", ["http-server", "out", "-p", "3456", "-s"], {
         stdio: "ignore",
         detached: true,
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((r) => setTimeout(r, 2000));
 
-      try {
-        execSync(`weasyprint http://localhost:3456/cv "${publicPdfPath}"`, {
-          stdio: "ignore",
-        });
-        console.log("✓ public/documents/furkan-nantu-cv.pdf generated");
-      } catch {
-        console.warn("weasyprint not available, using existing PDF fallback");
-      } finally {
-        if (server.pid) {
-          try {
-            process.kill(-server.pid);
-          } catch {
-            // process already exited
-          }
-        }
+      execSync(`weasyprint http://localhost:3456/cv "${publicPdfPath}"`, {
+        stdio: "ignore",
+      });
+      console.log("✓ public/documents/furkan-nantu-cv.pdf regenerated");
+    } catch {
+      console.warn("⚠ weasyprint not available — keeping existing PDF");
+    } finally {
+      if (server?.pid) {
+        try { process.kill(-server.pid); } catch { /* already exited */ }
       }
-    } catch (err) {
-      console.warn("Failed to spawn server for PDF generation:", err);
     }
+  } else if (!isCI) {
+    console.warn("⚠ No existing PDF found — skipping generation");
   }
 
-  // Ensure PDF is copied to out/documents/ for static export deployments (Cloudflare / Vercel)
+  // Always copy to out/documents/ (works in both CI and local)
   if (existsSync(publicPdfPath)) {
     if (!existsSync(outDocsDir)) {
       mkdirSync(outDocsDir, { recursive: true });
     }
-    const outPdfPath = join(outDocsDir, "furkan-nantu-cv.pdf");
-    copyFileSync(publicPdfPath, outPdfPath);
-    console.log("✓ out/documents/furkan-nantu-cv.pdf synchronized");
+    copyFileSync(publicPdfPath, join(outDocsDir, "furkan-nantu-cv.pdf"));
+    console.log("✓ out/documents/furkan-nantu-cv.pdf synced");
   } else {
-    console.warn("⚠ public/documents/furkan-nantu-cv.pdf not found — skipping sync");
+    console.warn("⚠ furkan-nantu-cv.pdf not found — skipping sync");
   }
 }
 
