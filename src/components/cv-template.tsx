@@ -1,4 +1,3 @@
-import { getProjects } from "@/lib/content";
 import { QrCode } from "@/components/qr-code";
 
 const contacts = [
@@ -46,12 +45,54 @@ const interests = [
   "Bilim Kurgu Edebiyatı",
 ];
 
+const cvProjects = [
+  {
+    title: "OEE Monitor",
+    subtitle: "Endüstriyel telemetri izleme sistemi",
+    year: "2026",
+    tags: ["Python", "RabbitMQ", "TimescaleDB", "KùzuDB"],
+    bullets: [
+      "RabbitMQ + TimescaleDB ile gerçek zamanlı sensör veri işleme mikroservisi geliştirdim",
+      "KùzuDB graf veritabanıyla makine bağımlılık topolojisi modelleyip kök-neden analizi imkanı sağladım",
+      "Zaman serisi verilerinde anomali tespiti yapan AI katmanı entegre ettim",
+    ],
+  },
+  {
+    title: "CRM Platformu",
+    subtitle: "Cross-platform müşteri ilişkileri yönetimi",
+    year: "2026",
+    tags: ["C#", ".NET 8", "WinForms", "Avalonia UI"],
+    bullets: [
+      ".NET 8 ile WinForms + Avalonia UI cross-platform mimarisi kurdum",
+      "RFM analiz motoruyla müşterileri 10 sadakat segmentine otomatik ayıran sistem geliştirdim",
+    ],
+  },
+  {
+    title: "MindForge",
+    subtitle: "AI destekli offline-first bilgi yönetimi",
+    year: "2026",
+    tags: ["C#", "Avalonia UI", "Python", "LangGraph"],
+    bullets: [
+      "LangGraph tabanlı 4 AI ajanı (STT, görev çıkarımı, planlama, semantik bağlantı) geliştirdim",
+      "SQLite-PostgreSQL arası offline-first senkronizasyon ve çakışma çözümleme mekanizması kurdum",
+    ],
+  },
+  {
+    title: "GameSense",
+    subtitle: "GraphRAG tabanlı oyun koçluğu sistemi",
+    year: "2026, Ar-Ge",
+    tags: ["Python", "LangGraph", "Qdrant", "KùzuDB"],
+    bullets: [
+      "Qdrant (vektör) + KùzuDB (graf) hibrit RAG mimarisi tasarladım",
+      "Multi-agent LLM sistemi için LangGraph durum makinesi kurguladım",
+    ],
+  },
+];
+
 const summary =
   "Bursa Teknik Üniversitesi Endüstri Mühendisliği 4. sınıf öğrencisi olarak; operasyonel verimlilik, süreç iyileştirme ve sistem analizi konularına derin bir ilgi duyuyorum. Temel odak noktam, karmaşık yapılar içindeki darboğazları tespit etmek, kaynak planlamasını optimize etmek ve işletmelerin stratejik hedefleri doğrultusunda veri odaklı karar destek mekanizmaları kurgulamaktır. Klasik mühendislik disiplinlerini günümüzün dijital dönüşüm ve veri analitiği gereksinimleriyle harmanlayarak, sürdürülebilir ve ölçeklenebilir sistemler tasarlamayı amaçlıyorum.\n\nProblem çözme yaklaşımım, olaylara parçalar halinde değil, bütüncül bir iş zekası ve mühendislik perspektifinden bakmayı temel alıyor. Süreçleri analiz ederken maliyetleri minimize edecek, iş akışlarını hızlandıracak ve kaliteyi artıracak analitik yöntemleri merkeze alıyorum. Akademik eğitimimde olgunlaştırdığım bu sistem odaklı düşünme yeteneğini yalnızca teoride bırakmak yerine, gerçek dünya senaryolarında uygulamaya geçirmek en büyük motivasyonum. Bu doğrultuda, öğrenim hayatımla eş zamanlı olarak aktif sorumluluk alabileceğim ve şirketin operasyonlarına doğrudan katma değer üretebileceğim uzun soluklu bir profesyonel rolde çalışmayı hedefliyorum.";
 
 export function CvTemplate() {
-  const projects = getProjects();
-
   return (
     <div className="cv-root">
       <div className="cv-a4">
@@ -128,28 +169,34 @@ export function CvTemplate() {
               <p className="summary">{summary}</p>
             </section>
 
-            {projects.length > 0 && (
+            {cvProjects.length > 0 && (
               <section>
                 <div className="s-head">
                   <div className="s-t">Projeler</div>
                   <div className="s-bar" />
                 </div>
-                {projects.map((project) => (
-                  <div className="card" key={project.slug}>
+                {cvProjects.map((project) => (
+                  <div className="card" key={project.title}>
                     <div className="c-head">
-                      <span className="c-title">{project.title}</span>
+                      <span className="c-title">
+                        {project.title} <span className="p-sub">— {project.subtitle}</span>
+                      </span>
                       <div className="tags">
                         {project.year && (
                           <span className="tb">{project.year}</span>
                         )}
-                        {project.tags.slice(0, 4).map((tag) => (
+                        {project.tags.map((tag) => (
                           <span className="tb" key={tag}>
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <p className="p-desc">{project.summary}</p>
+                    <ul className="p-bullets">
+                      {project.bullets.map((bullet, idx) => (
+                        <li key={idx}>{bullet}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </section>
