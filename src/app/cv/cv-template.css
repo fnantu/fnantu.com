@@ -182,10 +182,14 @@
   flex-direction: column;
   gap: 18px;
 }
+.cv-root .main section {
+  margin-bottom: 16px;
+}
 .cv-root .s-head {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 6px;
 }
 .cv-root .s-t {
   font-size: 16px;
@@ -205,6 +209,7 @@
   line-height: 1.35;
   color: var(--cv-tx2);
   white-space: pre-line;
+  margin-bottom: 14px;
 }
 .cv-root .card {
   background: #fff;
