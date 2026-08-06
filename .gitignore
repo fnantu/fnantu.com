@@ -8,3 +8,5 @@ out/
 .DS_Store
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+IMPLEMENTATION.md
+PLANNED_STRUCTURE.md
