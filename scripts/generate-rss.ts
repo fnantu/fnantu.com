@@ -7,14 +7,18 @@ const BASE = "https://fnantu.com";
 const posts = getPosts();
 const items = posts
   .map(
-    (p) => `    <item>
+    (p) => {
+      const date = new Date(p.date);
+      const pubDate = isNaN(date.getTime()) ? new Date().toUTCString() : date.toUTCString();
+      return `    <item>
       <title><![CDATA[${p.title}]]></title>
       <link>${BASE}/blog/${p.slug}</link>
       <description><![CDATA[${p.excerpt}]]></description>
       <category>${p.category}</category>
-      <pubDate>${new Date(p.date).toUTCString()}</pubDate>
+      <pubDate>${pubDate}</pubDate>
       <guid>${BASE}/blog/${p.slug}</guid>
-    </item>`
+    </item>`;
+    }
   )
   .join("\n");
 

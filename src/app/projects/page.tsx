@@ -1,4 +1,4 @@
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
 import { ProjectCard } from "@/components/project-card";
 import { getProjects } from "@/lib/content";
 

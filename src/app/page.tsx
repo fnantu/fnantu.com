@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Github, Star, GitFork } from "lucide-react";
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
+import { Avatar, LinkButton } from "@/components/ui";
 import { ProjectCard } from "@/components/project-card";
 import { getPosts, getProjects } from "@/lib/content";
 import { getGitHubProfile, getGitHubRepos } from "@/lib/github";
@@ -18,11 +19,9 @@ export default async function Home() {
       <section className="relative overflow-hidden">
         <div className="grid-bg absolute inset-0" />
         <div className="section relative min-h-[580px] pt-28 sm:pt-36">
-          <img
-            src="/images/avatar.jpg"
-            alt="Furkan Nantu"
-            className="mb-6 h-20 w-20 rounded-full border-2 border-violet-500/40 object-cover shadow-glow-sm"
-          />
+          <div className="mb-6">
+            <Avatar size="lg" priority className="shadow-glow-sm" />
+          </div>
           <h1 className="max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-[-.04em] sm:text-7xl lg:text-8xl">
             Furkan Nantu
           </h1>
@@ -34,19 +33,13 @@ export default async function Home() {
             şeyleri burada paylaşıyorum.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/projects"
-              className="flex items-center gap-2 rounded-full bg-violet-600 px-5 py-3 text-sm font-bold transition hover:bg-violet-500 hover:shadow-glow-btn"
-            >
+            <LinkButton href="/projects" variant="primary">
               Projeler
               <ArrowUpRight size={16} />
-            </Link>
-            <Link
-              href="/about"
-              className="rounded-full border border-white/[.08] px-5 py-3 text-sm font-bold transition hover:bg-white/[.04]"
-            >
+            </LinkButton>
+            <LinkButton href="/about" variant="outline">
               Hakkımda
-            </Link>
+            </LinkButton>
           </div>
         </div>
       </section>

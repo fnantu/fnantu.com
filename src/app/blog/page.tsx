@@ -1,4 +1,4 @@
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
 import { BlogList } from "@/components/blog-list";
 import { BlogSearch } from "@/components/blog-search";
 import { NewsletterForm } from "@/components/newsletter-form";

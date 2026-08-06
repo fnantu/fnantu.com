@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { validateBlogFrontmatter, validateProjectFrontmatter } from "./content-schema";
 
 export type Project = {
   slug: string; number: string; title: string; summary: string; description: string;
@@ -17,20 +18,9 @@ function getReadingTime(body: string, wordsPerMinute = 200): string {
   return `${minutes} dk`;
 }
 
-const MONTHS: Record<string, number> = {
-  oca: 1, şub: 2, sub: 2, mar: 3, nis: 4, may: 5, haz: 6,
-  tem: 7, ağu: 8, agu: 8, eyl: 9, eki: 10, kas: 11, ara: 12,
-};
-
-function parseTurkishDate(dateStr: string): Date | null {
-  const parts = dateStr.trim().split(" ");
-  if (parts.length !== 3) return null;
-  const day = parseInt(parts[0], 10);
-  const monthKey = parts[1].toLowerCase().slice(0, 3);
-  const month = MONTHS[monthKey];
-  const year = parseInt(parts[2], 10);
-  if (!day || !month || !year) return null;
-  return new Date(year, month - 1, day);
+function parseISODate(dateStr: string): Date | null {
+  const date = new Date(dateStr);
+  return isNaN(date.getTime()) ? null : date;
 }
 
 type RawItem = Record<string, string | undefined> & { body: string };
@@ -40,13 +30,39 @@ function readCollection(dir: string): RawItem[] {
   let files: string[];
   try {
     files = fs.readdirSync(directory).filter((file) => file.endsWith(".md"));
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to read content directory ${dir}:`, error instanceof Error ? error.message : String(error));
     return [];
   }
   return files.map((file) => {
-    const source = fs.readFileSync(path.join(directory, file), "utf8");
-    const { data, content } = matter(source);
-    return { ...(data as Record<string, string | undefined>), body: content.trim() };
+    try {
+      const source = fs.readFileSync(path.join(directory, file), "utf8");
+      const { data, content } = matter(source);
+
+      // gray-matter auto-converts YYYY-MM-DD to Date objects, convert back to string
+      const normalizedData = { ...data } as Record<string, unknown>;
+      if (normalizedData.date instanceof Date) {
+        normalizedData.date = normalizedData.date.toISOString().split('T')[0];
+      }
+
+      // Validate frontmatter based on collection type
+      if (dir === "blog") {
+        const validation = validateBlogFrontmatter(normalizedData);
+        if (!validation.valid) {
+          console.warn(`Invalid blog frontmatter in ${file}:`, validation.errors.join("; "));
+        }
+      } else if (dir === "projects") {
+        const validation = validateProjectFrontmatter(normalizedData);
+        if (!validation.valid) {
+          console.warn(`Invalid project frontmatter in ${file}:`, validation.errors.join("; "));
+        }
+      }
+
+      return { ...(normalizedData as Record<string, string | undefined>), body: content.trim() };
+    } catch (error) {
+      console.error(`Failed to parse ${file}:`, error instanceof Error ? error.message : String(error));
+      return { slug: "", body: "" };
+    }
   });
 }
 
@@ -76,8 +92,8 @@ export function getPosts(): Post[] {
     minutes: getReadingTime(item.body || ""),
     body: item.body || "",
   })).sort((a, b) => {
-    const dateA = parseTurkishDate(a.date);
-    const dateB = parseTurkishDate(b.date);
+    const dateA = parseISODate(a.date);
+    const dateB = parseISODate(b.date);
     if (dateA && dateB) return dateB.getTime() - dateA.getTime();
     if (dateA) return -1;
     if (dateB) return 1;

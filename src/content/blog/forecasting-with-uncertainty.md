@@ -3,7 +3,7 @@ slug: forecasting-with-uncertainty
 category: DATA
 title: Tahmin modellerinde belirsizliği yönetmek
 excerpt: Tek bir sayı vermek yerine aralıklarla düşünmek neden daha iyi?
-date: 12 Haz 2025
+date: 2025-06-12
 ---
 
 Tahmin denince akla genelde tek bir sayı geliyor: "Gelecek ay 1.200 birim satacağız." Ama gerçek dünya böyle çalışmıyor. Bir tahminin asıl değeri, beraberinde getirdiği belirsizlik bilgisiyle ortaya çıkıyor.

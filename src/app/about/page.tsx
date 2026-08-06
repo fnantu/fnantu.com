@@ -1,4 +1,5 @@
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
+import { Avatar } from "@/components/ui";
 
 const categories = [
   {
@@ -43,11 +44,9 @@ export default function About() {
       <section className="section max-w-3xl pt-20 sm:pt-28">
         <p className="eyebrow">Hakkımda</p>
         <div className="mt-8 flex justify-center">
-          <img
-            src="/images/avatar.jpg"
-            alt="Furkan Nantu"
-            className="h-36 w-36 rounded-full border-2 border-violet-500/50 object-cover shadow-glow"
-          />
+          <div className="border-2 border-violet-500/50 rounded-full shadow-glow">
+            <Avatar size="lg" priority className="border-0" />
+          </div>
         </div>
         <h1 className="mt-6 text-center text-5xl font-extrabold tracking-tight sm:text-7xl">
           Furkan Nantu

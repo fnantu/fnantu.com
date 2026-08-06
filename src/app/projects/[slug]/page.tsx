@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Github } from "lucide-react";
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
 import { getProject, getProjects } from "@/lib/content";
 import { ProjectJsonLd } from "@/components/json-ld";
 

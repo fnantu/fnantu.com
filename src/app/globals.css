@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../styles/components.css";
+
 :root { --bg: #0C0A18; --surface: #151224; --muted: #8E85AB; --line: rgba(255,255,255,.06); --violet: #A855F7; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

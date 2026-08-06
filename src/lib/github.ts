@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export type GitHubProfile = {
   login: string;
   name: string;
@@ -19,29 +21,39 @@ export type GitHubRepo = {
   fork: boolean;
 };
 
-const GITHUB_USERNAME = "fnantu";
 const BASE = "https://api.github.com";
 
 async function fetchGitHub(path: string) {
-  const headers: Record<string, string> = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "fnantu-portfolio",
-  };
-  if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  try {
+    const headers: Record<string, string> = {
+      Accept: "application/vnd.github+json",
+      "User-Agent": "fnantu-portfolio",
+    };
+    if (process.env.GITHUB_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
+    const res = await fetch(`${BASE}${path}`, {
+      headers,
+      next: { revalidate: siteConfig.github.cacheTTL }
+    });
+    if (!res.ok) {
+      console.warn(`GitHub API error: ${res.status} ${res.statusText}`);
+      return null;
+    }
+    return res.json();
+  } catch (error) {
+    console.error("Failed to fetch GitHub data:", error instanceof Error ? error.message : String(error));
+    return null;
   }
-  const res = await fetch(`${BASE}${path}`, { headers, next: { revalidate: 3600 } });
-  if (!res.ok) return null;
-  return res.json();
 }
 
 export async function getGitHubProfile(): Promise<GitHubProfile | null> {
-  return fetchGitHub(`/users/${GITHUB_USERNAME}`);
+  return fetchGitHub(`/users/${siteConfig.github.username}`);
 }
 
 export async function getGitHubRepos(count = 6): Promise<GitHubRepo[]> {
   const repos = await fetchGitHub(
-    `/users/${GITHUB_USERNAME}/repos?sort=stars&per_page=${count}&type=owner`
+    `/users/${siteConfig.github.username}/repos?sort=stars&per_page=${count}&type=owner`
   );
   if (!Array.isArray(repos)) return [];
   return repos.filter((r: GitHubRepo) => !r.fork).slice(0, count);

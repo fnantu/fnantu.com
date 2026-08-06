@@ -3,7 +3,7 @@ slug: from-sql-to-decision
 category: SQL
 title: SQL sorgusundan karara
 excerpt: İyi bir analiz sadece sonucu değil, hangi soruyu cevapladığını da bilir.
-date: 28 May 2025
+date: 2025-05-28
 ---
 
 Bir SQL sorgusu yazmaya başlamadan önce kendime sorduğum ilk soru: "Bu sorgunun cevabı neyi değiştirecek?" Cevap net değilse, o sorgu muhtemelen gereksiz.

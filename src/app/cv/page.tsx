@@ -1,5 +1,5 @@
 import { Download } from "lucide-react";
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
 import { CvTemplate } from "@/components/cv-template";
 import { PrintButton } from "@/components/print-button";
 import "./cv-template.css";

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { PageShell } from "@/components/page-shell";
+import { PageShell } from "@/components/layout";
 import { getPost, getPosts } from "@/lib/content";
 import { BlogPostJsonLd } from "@/components/json-ld";
 import { TableOfContents } from "@/components/toc";

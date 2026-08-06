@@ -29,15 +29,16 @@ async function main() {
         stdio: "ignore",
       });
       console.log("✓ public/documents/furkan-nantu-cv.pdf regenerated");
-    } catch {
+    } catch (error) {
       console.warn("⚠ weasyprint not available — keeping existing PDF");
+      console.debug("Error details:", error instanceof Error ? error.message : String(error));
     } finally {
       if (server?.pid) {
         try { process.kill(-server.pid); } catch { /* already exited */ }
       }
     }
   } else if (!isCI) {
-    console.warn("⚠ No existing PDF found — skipping generation");
+    console.log("ℹ PDF generation skipped in CI environment");
   }
 
   // Always copy to out/documents/ (works in both CI and local)

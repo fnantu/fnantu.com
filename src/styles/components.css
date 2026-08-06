@@ -1,0 +1,42 @@
+/* Button and Link Utilities */
+.btn {
+  @apply inline-flex items-center gap-2 rounded-full font-bold transition duration-200;
+}
+
+.btn-primary {
+  @apply bg-violet-600 px-5 py-3 text-sm hover:bg-violet-500 hover:shadow-glow-btn;
+}
+
+.btn-outline {
+  @apply border border-white/[.1] px-5 py-3 text-sm hover:border-white/[.2] hover:bg-white/[.04];
+}
+
+.btn-ghost {
+  @apply px-4 py-2 text-sm hover:text-violet-300;
+}
+
+/* Link Utilities */
+.link-primary {
+  @apply inline-flex items-center gap-2 text-sm font-bold text-white transition hover:text-violet-300;
+}
+
+/* Card Utilities */
+.card-hover {
+  @apply transition duration-200 hover:border-white/[.12] hover:shadow-glow;
+}
+
+/* Focus States */
+.focus-ring {
+  @apply outline-none ring-2 ring-violet-500 ring-offset-2 ring-offset-zinc-950;
+}
+
+/* Accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-violet-500 ring-offset-2 ring-offset-zinc-950;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  @apply outline-none ring-2 ring-violet-500 ring-offset-2 ring-offset-zinc-950;
+}
