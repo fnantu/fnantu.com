@@ -108,3 +108,5 @@ export function getProject(slug: string) {
 export function getPost(slug: string) {
   return getPosts().find((post) => post.slug === slug);
 }
+
+export { formatDateTR } from "./format";

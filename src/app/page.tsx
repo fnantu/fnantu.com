@@ -3,7 +3,7 @@ import { ArrowUpRight, Github, Star, GitFork } from "lucide-react";
 import { PageShell } from "@/components/layout";
 import { Avatar, LinkButton } from "@/components/ui";
 import { ProjectCard } from "@/components/project-card";
-import { getPosts, getProjects } from "@/lib/content";
+import { getPosts, getProjects, formatDateTR } from "@/lib/content";
 import { getGitHubProfile, getGitHubRepos } from "@/lib/github";
 import { PersonJsonLd } from "@/components/json-ld";
 
@@ -68,6 +68,7 @@ export default async function Home() {
               <a
                 href={profile.html_url}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="mt-1 flex items-center gap-2 font-mono text-sm font-bold text-violet-300 transition hover:text-violet-400"
               >
                 @{profile.login}
@@ -83,6 +84,7 @@ export default async function Home() {
                   key={repo.name}
                   href={repo.html_url}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="card group block p-5"
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -132,6 +134,7 @@ export default async function Home() {
           <a
             href={`https://github.com/${profile.login}`}
             target="_blank"
+            rel="noopener noreferrer"
             className="link-arrow mt-8"
           >
             GitHub profilini gör
@@ -205,13 +208,10 @@ export default async function Home() {
           <h2 className="mt-3 max-w-xl text-2xl font-bold tracking-tight sm:text-3xl">
             Bir sorunuz ya da fikriniz varsa yazmaktan çekinmeyin.
           </h2>
-          <Link
-            href="/contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-3 text-sm font-bold transition hover:bg-violet-500 hover:shadow-glow-btn"
-          >
+          <LinkButton href="/contact" variant="primary" className="mt-6">
             İletişim
             <ArrowUpRight size={15} />
-          </Link>
+          </LinkButton>
         </div>
       </section>
     </PageShell>

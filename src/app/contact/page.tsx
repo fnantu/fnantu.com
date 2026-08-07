@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { PageShell } from "@/components/layout";
+import { siteConfig } from "@/config/site";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "İletişim",
   description: "Furkan Nantu ile iletişim.",
+  alternates: { canonical: `${siteConfig.domain}/contact` },
 };
 
 export default function Contact() {
@@ -30,6 +33,8 @@ export default function Contact() {
             className="card inline-flex items-center gap-2 px-4 py-3 text-sm transition hover:border-violet-500/30"
             href="https://www.linkedin.com/in/furkan-nantu-6b1827175/"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profili (yeni sekmede açılır)"
           >
             <Linkedin size={16} /> LinkedIn
           </a>
@@ -37,6 +42,8 @@ export default function Contact() {
             className="card inline-flex items-center gap-2 px-4 py-3 text-sm transition hover:border-violet-500/30"
             href="https://github.com/fnantu"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profili (yeni sekmede açılır)"
           >
             <Github size={16} /> GitHub
           </a>

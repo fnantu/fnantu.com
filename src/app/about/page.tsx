@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/layout";
 import { Avatar } from "@/components/ui";
+import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "Hakkımda",
+  description: "Furkan Nantu — endüstri mühendisi, yazılımcı.",
+  alternates: { canonical: `${siteConfig.domain}/about` },
+};
 
 const categories = [
   {

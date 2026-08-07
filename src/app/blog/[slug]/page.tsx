@@ -1,13 +1,39 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { PageShell } from "@/components/layout";
-import { getPost, getPosts } from "@/lib/content";
+import { getPost, getPosts, formatDateTR } from "@/lib/content";
 import { BlogPostJsonLd } from "@/components/json-ld";
 import { TableOfContents } from "@/components/toc";
+import { siteConfig } from "@/config/site";
 
 export function generateStaticParams() {
   return getPosts().map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) return {};
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `${siteConfig.domain}/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
 }
 
 function slugify(text: string) {
@@ -55,7 +81,7 @@ export default async function Post({
         </Link>
 
         <p className="eyebrow mt-14">
-          {post.category} · {post.date} · {post.minutes}
+          {post.category} · <time dateTime={post.date}>{formatDateTR(post.date)}</time> · {post.minutes}
         </p>
         <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-6xl">
           {post.title}

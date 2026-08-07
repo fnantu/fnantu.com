@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && npx tsx scripts/generate-rss.ts && npx tsx scripts/generate-pdf.ts",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",
@@ -29,6 +30,7 @@
     "tailwindcss": "^3.4.17",
     "tsx": "^4.23.1",
     "typescript": "5.7.2",
+    "vitest": "^4.1.10",
     "wrangler": "^3.114.17"
   }
 }

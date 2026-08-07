@@ -49,12 +49,17 @@ export function NewsletterForm() {
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="mt-4 flex gap-3">
+          <label htmlFor="newsletter-email" className="sr-only">
+            E-posta adresi
+          </label>
           <input
+            id="newsletter-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="eposta@ornek.com"
             required
+            aria-describedby={status === "error" ? "newsletter-error" : undefined}
             className="min-w-0 flex-1 rounded-full border border-white/[.08] bg-zinc-900/50 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none transition focus:border-violet-500/40"
           />
           <button
@@ -68,7 +73,9 @@ export function NewsletterForm() {
       )}
 
       {status === "error" && (
-        <p className="mt-3 text-sm text-red-400">Bir hata oluştu, tekrar dene.</p>
+        <p id="newsletter-error" role="alert" className="mt-3 text-sm text-red-400">
+          Bir hata oluştu, tekrar dene.
+        </p>
       )}
     </div>
   );

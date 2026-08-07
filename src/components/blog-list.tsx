@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import type { Post } from "@/lib/content";
+import { formatDateTR } from "@/lib/format";
 
 export function BlogList({ posts }: { posts: Post[] }) {
   const categories = Array.from(new Set(posts.map((p) => p.category)));
@@ -65,7 +66,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
                 <p className="mt-2 text-sm text-zinc-500">{post.excerpt}</p>
               </div>
               <div className="flex items-center gap-4 text-xs text-zinc-500">
-                <span>{post.date}</span>
+                <time dateTime={post.date}>{formatDateTR(post.date)}</time>
                 <ArrowUpRight
                   size={17}
                   className="transition group-hover:text-violet-400"

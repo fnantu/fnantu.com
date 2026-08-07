@@ -1,12 +1,15 @@
+import type { Metadata } from "next";
 import { Download } from "lucide-react";
 import { PageShell } from "@/components/layout";
 import { CvTemplate } from "@/components/cv-template";
 import { PrintButton } from "@/components/print-button";
+import { siteConfig } from "@/config/site";
 import "./cv-template.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "CV",
   description: "Furkan Nantu — özgeçmiş.",
+  alternates: { canonical: `${siteConfig.domain}/cv` },
 };
 
 export default function CV() {

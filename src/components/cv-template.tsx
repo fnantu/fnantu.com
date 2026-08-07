@@ -101,7 +101,7 @@ export function CvTemplate() {
             <h1>Furkan NANTU</h1>
             <h2>Endüstri Mühendisliği Öğrencisi</h2>
           </div>
-          <a className="qr" href="https://fnantu.com" target="_blank">
+          <a className="qr" href="https://fnantu.com" target="_blank" rel="noopener noreferrer">
             <span className="qr-b">
               <QrCode url="https://fnantu.com" size={68} />
             </span>

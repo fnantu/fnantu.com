@@ -1,14 +1,38 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Github } from "lucide-react";
 import { PageShell } from "@/components/layout";
 import { getProject, getProjects } from "@/lib/content";
 import { ProjectJsonLd } from "@/components/json-ld";
+import { siteConfig } from "@/config/site";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getProjects().map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: {
+      canonical: `${siteConfig.domain}/projects/${slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+    },
+  };
 }
 
 export default async function ProjectDetail({
@@ -60,6 +84,8 @@ export default async function ProjectDetail({
             <a
               href={project.github}
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Projeyi GitHub'da incele (yeni sekmede açılır)"
               className="inline-flex items-center gap-2 rounded-full border border-white/[.08] px-5 py-3 text-sm font-bold transition hover:border-violet-500/40 hover:text-violet-300"
             >
               <Github size={16} /> GitHub&apos;da incele
